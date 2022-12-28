@@ -1,0 +1,95 @@
+Vagrant.configure("2") do |config|
+	config.vm.define "m1" do |m1|
+	  m1.vm.box = "ubuntu/jammy64"
+	  m1.vm.hostname = 'm1'
+
+	  m1.vm.network :private_network, ip: "192.168.0.1"
+
+	  m1.vm.provider :virtualbox do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--memory", 512]
+		v.customize ["modifyvm", :id, "--name", "m1"]
+		v.customize ["modifyvm", :id, "--cpus", "6"]
+	  end
+	  
+	  m1.vagrant.plugins = "vagrant-docker-compose"
+	  # install docker and docker-compose
+	  m1.vm.provision :docker
+	  m1.vm.provision :docker_compose
+	end	
+	config.vm.define "m2" do |m2|
+	  m2.vm.box = "ubuntu/jammy64"
+	  m2.vm.hostname = 'm2'
+
+	  m2.vm.network :private_network, ip: "192.168.0.2"
+
+	  m2.vm.provider :virtualbox do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--memory", 512]
+		v.customize ["modifyvm", :id, "--name", "m2"]
+		v.customize ["modifyvm", :id, "--cpus", "6"]
+	  end
+	  
+	  m2.vagrant.plugins = "vagrant-docker-compose"
+	  # install docker and docker-compose
+	  m2.vm.provision :docker
+	  m2.vm.provision :docker_compose
+	end	
+
+	config.vm.define "m3" do |m3|
+	  m3.vm.box = "ubuntu/jammy64"
+	  m3.vm.hostname = 'm3'
+
+	  m3.vm.network :private_network, ip: "192.168.0.3"
+
+	  m3.vm.provider :virtualbox do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--memory", 512]
+		v.customize ["modifyvm", :id, "--name", "m3"]
+		v.customize ["modifyvm", :id, "--cpus", "6"]
+	  end
+	  
+	  m3.vagrant.plugins = "vagrant-docker-compose"
+	  # install docker and docker-compose
+	  m3.vm.provision :docker
+	  m3.vm.provision :docker_compose
+	end	
+
+	config.vm.define "m4" do |m4|
+	  m4.vm.box = "ubuntu/jammy64"
+	  m4.vm.hostname = 'm4'
+
+	  m4.vm.network :private_network, ip: "192.168.0.4"
+
+	  m4.vm.provider :virtualbox do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--memory", 512]
+		v.customize ["modifyvm", :id, "--name", "m4"]
+		v.customize ["modifyvm", :id, "--cpus", "6"]
+	  end
+	  
+	  m4.vagrant.plugins = "vagrant-docker-compose"
+	  # install docker and docker-compose
+	  m4.vm.provision :docker
+	  m4.vm.provision :docker_compose
+	end	
+
+	config.vm.define "m5" do |m5|
+	  m5.vm.box = "ubuntu/jammy64"
+	  m5.vm.hostname = 'm5'
+
+	  m5.vm.network :private_network, ip: "192.168.0.5"
+
+	  m5.vm.provider :virtualbox do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--memory", 512]
+		v.customize ["modifyvm", :id, "--name", "m5"]
+		v.customize ["modifyvm", :id, "--cpus", "6"]
+	  end
+	  
+	  m5.vagrant.plugins = "vagrant-docker-compose"
+	  # install docker and docker-compose
+	  m5.vm.provision :docker
+	  m5.vm.provision :docker_compose
+	end	
+end
